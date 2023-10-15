@@ -2,7 +2,7 @@
   <aside class="sidebar">
     <h2>Spelling Games</h2>
     <button class="add-words-btn" (click)="toggleWordAddition()">Add Words</button>
-
+    <!-- TODO: Make game selection button look more like buttons. -->
     <ul>
       <li [class.disabled]="savedWords.length === 0"
     (click)="savedWords.length > 0 && navigateToGame('word-search')">Word Search</li>

@@ -1,4 +1,5 @@
 <table>
+  <caption>Select the First and Last Letter of the word.</caption>
   <tr *ngFor="let row of grid; let rowIndex = index">
     <td *ngFor="let cell of row; let colIndex = index"
         [class.selected]="cell.selected"
@@ -9,3 +10,5 @@
     </td>
   </tr>
 </table>
+<!-- TODO: Create Win Screen for Word Search -->
+<!-- TODO: Fix Overlap at the bottom -->
