@@ -29,7 +29,6 @@ jobs:
         folder: dist
         bucket: ${{ secrets.AWS_S3_BUCKET }}
         bucket-region: 'us-west-2'
-        invalidation: /
         delete-removed: true
         no-cache: true
         private: true
