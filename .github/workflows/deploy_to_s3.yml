@@ -10,6 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # This step builds your Angular app
+    - name: Build Angular app
+      run: |
+        npm install
+        npm run build
+
+    # This step deploys your built app to S3
     - name: Deploy to S3
       uses: reggionick/s3-deploy@v4
       with:
