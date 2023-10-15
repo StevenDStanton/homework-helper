@@ -1,1 +1,43 @@
-<p>spelling works!</p>
+<div class="spelling-container">
+  <aside class="sidebar">
+    <h2>Spelling Games</h2>
+    <button class="add-words-btn" (click)="toggleWordAddition()">Add Words</button>
+
+    <ul>
+      <li [class.disabled]="savedWords.length === 0"
+    (click)="savedWords.length > 0 && navigateToGame('word-search')">Word Search</li>
+
+
+      <li [ngClass]="{ 'disabled': savedWords.length === 0 }"
+          (click)="savedWords.length > 0 && navigateToGame('StoryWordSearch')">Story Word Search</li>
+
+      <li [ngClass]="{ 'disabled': savedWords.length === 0 }"
+          (click)="savedWords.length > 0 && navigateToGame('CrosswordPuzzle')">Crossword Puzzle</li>
+
+      <li [ngClass]="{ 'disabled': savedWords.length === 0 }"
+          (click)="savedWords.length > 0 && navigateToGame('SpellingDecoder')">Spelling Decoder</li>
+
+      <li [ngClass]="{ 'disabled': savedWords.length === 0 }"
+          (click)="savedWords.length > 0 && navigateToGame('JumbledWords')">Jumbled Words</li>
+
+      <li [ngClass]="{ 'disabled': savedWords.length === 0 }"
+          (click)="savedWords.length > 0 && navigateToGame('MissingLetters')">Missing Letters</li>
+
+      <li [ngClass]="{ 'disabled': savedWords.length === 0 }"
+          (click)="savedWords.length > 0 && navigateToGame('MatchTheWordDefinition')">Match the Word Definition</li>
+    </ul>
+
+  </aside>
+
+  <main class="content">
+    <div class="content" *ngIf="showWordAddition">
+      <textarea [value]="spellingWords" (input)="handleInput($event)" rows="25"></textarea>
+
+
+      <br>
+      <button (click)="saveWords()">Save</button>
+    </div>
+    <router-outlet></router-outlet>
+
+  </main>
+</div>

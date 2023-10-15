@@ -1,0 +1,11 @@
+<table>
+  <tr *ngFor="let row of grid; let rowIndex = index">
+    <td *ngFor="let cell of row; let colIndex = index"
+        [class.selected]="cell.selected"
+        [class.correct]="cell.correct"
+        [class.incorrect]="cell.incorrect"
+        (click)="selectCell(rowIndex, colIndex)">
+      {{ cell.letter }}
+    </td>
+  </tr>
+</table>

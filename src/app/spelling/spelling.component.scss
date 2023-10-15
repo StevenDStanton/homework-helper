@@ -1,0 +1,89 @@
+:host {
+  display: block;
+  padding: 20px;
+  background-color: #E6F7FF; // Light blue background
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.spelling-container {
+  display: flex;
+  gap: 2rem;
+
+  .sidebar {
+    flex: 1; // takes up 1 fraction of the space
+    padding: 20px;
+    background-color: #F6E7D8; // A light beige color
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 1rem;
+      color: #2D72D9; // Using the same blue color for consistency
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+
+      li {
+        padding: 10px 0;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #E6F7FF; // A light blue hover effect
+        }
+      }
+    }
+  }
+
+  .content {
+    flex: 2; // takes up 2 fractions of the space, making it wider
+    padding: 20px;
+    background-color: #E6F7FF; // The light blue we used before
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.add-words-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: yellow;
+  color: #333; // Dark text on a yellow background
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  // Adding a small plus sign before the button text
+  &:before {
+    content: "\002B\00A0"; // Unicode for + and a non-breaking space
+    display: inline-block;
+  }
+
+  &:hover {
+    background-color: #FFD700; // Slightly darker yellow on hover
+  }
+}
+
+  span {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+
+.disabled {
+  color: #aaa; // Grayed out
+  cursor: not-allowed; // Indicates an unavailable action
+  pointer-events: none; // Make sure the link isn't clickable
+}
