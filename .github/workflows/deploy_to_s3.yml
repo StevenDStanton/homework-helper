@@ -25,12 +25,16 @@ jobs:
       run: npm run build --prod
 
     - name: Deploy to S3
-      uses: jakejarvis/s3-sync-action@master
+      uses: reggionick/s3-deploy@v4
       with:
-        args: --acl public-read --follow-symlinks --delete
-        bucket: YOUR_S3_BUCKET_NAME
-        exclude: '*.*'
-        include: 'dist/*'
+        folder: dist
+        bucket: ${{ secrets.S3_BUCKET }}
+        bucket-region: ${{ secrets.S3_BUCKET_REGION }}
+        invalidation: /
+        delete-removed: true
+        no-cache: true
+        private: true
+        files-to-include: '.*/*,*/*,**'
       env:
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
