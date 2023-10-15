@@ -29,6 +29,8 @@ jobs:
         folder: dist/homework-helper
         bucket: ${{ secrets.AWS_S3_BUCKET }}
         bucket-region: 'us-west-2'
+        dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+        invalidation: /
         delete-removed: true
         no-cache: true
         private: true
