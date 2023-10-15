@@ -1,0 +1,7 @@
+<div class="word-list">
+  <div *ngFor="let word of words">
+    <input type="checkbox" [(ngModel)]="word.checked" (change)="toggleWordChecked(word)" />
+    <span [class.crossed]="word.checked">{{ word.text }}</span>
+  </div>
+  <button (click)="clearAll()">Clear All</button>
+</div>

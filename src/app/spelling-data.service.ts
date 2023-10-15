@@ -4,15 +4,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SpellingDataService {
-  private words: string[] = [];
+  private words: { text: string, checked: boolean }[] = [];
 
   constructor() { }
 
-  setWords(words: string[]): void {
+  setWords(words: { text: string, checked: boolean }[]): void {
     this.words = words;
   }
 
-  getWords(): string[] {
+  getWords(): { text: string, checked: boolean }[] {
     return this.words;
   }
 }

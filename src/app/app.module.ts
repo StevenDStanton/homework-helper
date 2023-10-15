@@ -9,6 +9,7 @@ import { LayoutComponent } from './layout/layout.component';
 
 import { FormsModule } from '@angular/forms';
 import { WordSearchComponent } from './games/word-search/word-search.component';
+import { WordListComponent } from './spelling/word-list/word-list.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { WordSearchComponent } from './games/word-search/word-search.component';
     SpellingComponent,
     MathComponent,
     LayoutComponent,
-    WordSearchComponent
+    WordSearchComponent,
+    WordListComponent
   ],
   imports: [
     BrowserModule,

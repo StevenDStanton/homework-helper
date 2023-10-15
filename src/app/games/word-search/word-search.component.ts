@@ -1,34 +1,35 @@
-import { Component, OnInit } from '@angular/core'
-import { SpellingDataService } from '../../spelling-data.service'
+import { Component, OnInit } from '@angular/core';
+import { SpellingDataService } from '../../spelling-data.service';
 
 interface GridCell {
-  letter: string
-  selected: boolean
-  correct?: boolean
-  incorrect?: boolean
+  letter: string;
+  selected: boolean;
+  correct?: boolean;
+  incorrect?: boolean;
 }
 
 @Component({
   selector: 'app-word-search',
   templateUrl: './word-search.component.html',
-  styleUrls: ['./word-search.component.scss']
+  styleUrls: ['./word-search.component.scss'],
 })
 export class WordSearchComponent implements OnInit {
-  grid: GridCell[][] = []
-  gridSize: number = 15
-  words: string[] = []
-  horizontalWords: string[] = []
-  verticalWords: string[] = []
-  startPoint: { row: number; col: number } | null = null
+  grid: GridCell[][] = [];
+  gridSize: number = 15;
+  words: { text: string; checked: boolean }[] = [];
+  horizontalWords: { text: string; checked: boolean }[] = [];
+  verticalWords: { text: string; checked: boolean }[] = [];
+  startPoint: { row: number; col: number } | null = null;
 
-  constructor (private spellingDataService: SpellingDataService) {}
+  constructor(private spellingDataService: SpellingDataService) {}
 
-  ngOnInit (): void {
-    this.words = this.spellingDataService.getWords()
-    this.horizontalWords = this.words.slice(0, this.words.length / 2)
-    this.verticalWords = this.words.slice(this.words.length / 2)
-    this.generateGrid()
+  ngOnInit(): void {
+    this.words = this.spellingDataService.getWords();
+    this.horizontalWords = this.words.slice(0, this.words.length / 2);
+    this.verticalWords = this.words.slice(this.words.length / 2);
+    this.generateGrid();
   }
+
 
   generateGrid (): void {
     for (let i = 0; i < this.gridSize; i++) {
@@ -53,8 +54,9 @@ export class WordSearchComponent implements OnInit {
     }
   }
 
-  populateWords (words: string[], orientation: 'horizontal' | 'vertical'): void {
-    words.forEach(word => {
+  populateWords(words: { text: string; checked: boolean }[], orientation: 'horizontal' | 'vertical'): void {
+    words.forEach(wordObj => {
+      let word = wordObj.text;
       let attempts = 3 // number of attempts to fit a word without collision
       while (attempts-- > 0) {
         let row, col
@@ -139,17 +141,13 @@ export class WordSearchComponent implements OnInit {
     }
   }
 
-  checkSelectedCells (): void {
-    const selectedCells = this.grid.flatMap(r => r.filter(c => c.selected))
-    const selectedWord = selectedCells
-      .map(c => c.letter)
-      .join('')
-      .toLowerCase()
+  checkSelectedCells(): void {
+    const selectedCells = this.grid.flatMap((r) => r.filter((c) => c.selected));
+    const selectedWord = selectedCells.map((c) => c.letter).join('').toLowerCase();
 
-    // Log the value of all letters in the selected cells
-    console.log(`Selected letters: ${selectedWord}`)
+    console.log(`Selected letters: ${selectedWord}`);
 
-    if (this.words.some(word => word.toLowerCase() === selectedWord)) {
+    if (this.words.some(wordObj => wordObj.text.toLowerCase() === selectedWord)) {
       this.grid.forEach(row =>
         row.forEach(cell => {
           if (cell.selected) {

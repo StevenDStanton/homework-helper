@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { SpellingDataService } from '../spelling-data.service'
 import { Router, ActivatedRoute  } from '@angular/router';
+import { WordListComponent } from './word-list/word-list.component';
 
 @Component({
   selector: 'app-spelling',
@@ -10,7 +11,7 @@ import { Router, ActivatedRoute  } from '@angular/router';
 export class SpellingComponent {
   showWordAddition: boolean = false
   spellingWords: string = ''
-  savedWords: string[] = []
+  savedWords: { text: string, checked: boolean }[] = [];
 
   constructor (private router: Router, private route: ActivatedRoute, private spellingDataService: SpellingDataService) {}
 
@@ -18,14 +19,14 @@ export class SpellingComponent {
     this.showWordAddition = !this.showWordAddition
   }
 
-  saveWords () {
+  saveWords() {
     const words = this.spellingWords.split('\n')
     if (words.length <= 25) {
-      this.savedWords = words
-      this.spellingDataService.setWords(words)
-      this.showWordAddition = false
+      this.savedWords = words.map(word => ({ text: word, checked: false }));
+      this.spellingDataService.setWords(this.savedWords);
+      this.showWordAddition = false;
     } else {
-      alert('Please enter a maximum of 25 words.')
+      alert('Please enter a maximum of 25 words.');
     }
   }
 

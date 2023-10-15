@@ -5,7 +5,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   margin: 20px auto;
-  max-width: 800px;
+  max-width: 80%;
   text-align: center;
 }
 
@@ -19,6 +19,7 @@
     background-color: #F6E7D8; // A light beige color
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 50vh;
 
     h2 {
       font-size: 1.5em;
@@ -44,12 +45,25 @@
 
   .content {
     flex: 2; // takes up 2 fractions of the space, making it wider
-    padding: 20px;
+    padding: 10px;
+    margin: 10px;
     background-color: #E6F7FF; // The light blue we used before
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50vh;
+    height: 50vh;
   }
+
+  .content::before {
+    content: "";
+    display: block;
+    padding-top: 100%;  // Creates a square box
 }
+
 
 .add-words-btn {
   display: block;
@@ -86,4 +100,15 @@
   color: #aaa; // Grayed out
   cursor: not-allowed; // Indicates an unavailable action
   pointer-events: none; // Make sure the link isn't clickable
+}
+
+/* New CSS for the word list container */
+.word-list-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #E6F7FF;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 }

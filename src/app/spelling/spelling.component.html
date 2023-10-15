@@ -30,14 +30,18 @@
   </aside>
 
   <main class="content">
-    <div class="content" *ngIf="showWordAddition">
+
+    <router-outlet></router-outlet>
+  </main>
+
+  <div class="word-list-container">
+    <div *ngIf="showWordAddition">
       <textarea [value]="spellingWords" (input)="handleInput($event)" rows="25"></textarea>
-
-
       <br>
       <button (click)="saveWords()">Save</button>
     </div>
-    <router-outlet></router-outlet>
-
-  </main>
+    <div *ngIf="!showWordAddition">
+    <app-word-list [words]="savedWords"></app-word-list>
+    </div>
+  </div>
 </div>
