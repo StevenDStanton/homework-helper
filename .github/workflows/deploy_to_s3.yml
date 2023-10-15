@@ -28,7 +28,7 @@ jobs:
       uses: reggionick/s3-deploy@v4
       with:
         folder: dist
-        bucket: ${{ secrets.S3_BUCKET }}
+        bucket: ${{ secrets.AWS_S3_BUCKET }}
         bucket-region: 'us-west-2'
         invalidation: /
         delete-removed: true
