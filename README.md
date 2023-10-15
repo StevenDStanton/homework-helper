@@ -32,3 +32,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 git tag deploy-*
 git push origin deploy-*
+
+
+TODO: Add link to github repo at the bottom of the page
